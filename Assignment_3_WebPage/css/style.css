@@ -1,0 +1,106 @@
+/* Global styles for Study Task Manager
+   Colour palette: navy base, white/beige/grey neutrals, teal and red accents
+   Chosen for simplicity, contrast, and readability */
+
+:root {
+    --base-color: #1e2d4a;       /* Navy - used for header, footer, headings */
+    --accent-color: #2e7d7a;     /* Teal - used for buttons and links */
+    --accent-red: #9b2b2b;       /* Red - used for delete actions and warnings */
+    --background-color: #f5f0e8; /* Beige - main page background */
+    --surface-color: #ffffff;    /* White - cards and section backgrounds */
+    --text-color: #1a1a1a;       /* Near black - main body text */
+    --text-muted: #6b6b6b;       /* Grey - secondary or placeholder text */
+    --border-color: #cccccc;     /* Light grey - borders and dividers */
+}
+
+/* Basic reset so browsers display things consistently */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Centers content and limits maximum width */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header at the top of every page */
+header {
+    background-color: var(--base-color);
+    color: #ffffff;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.4rem;
+}
+
+/* Navigation bar inside the header */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+}
+
+/* Highlight the link on hover */
+nav a:hover {
+    background-color: var(--accent-color);
+}
+
+/* Main content area below the header */
+main {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Each section is displayed as a white card */
+section {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+section h2 {
+    font-size: 1.2rem;
+    color: var(--base-color);
+    margin-bottom: 12px;
+}
+
+section p {
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+/* Footer at the bottom of every page */
+footer {
+    background-color: var(--base-color);
+    color: #cccccc;
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 0.875rem;
+    margin-top: 40px;
+}
