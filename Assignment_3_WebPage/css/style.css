@@ -68,6 +68,11 @@ nav a:hover {
     background-color: var(--accent-color);
 }
 
+/* Shows the user which page they are currently on */
+nav a.active {
+    background-color: var(--accent-color);
+}
+
 /* Main content area below the header */
 main {
     padding: 30px 20px;
