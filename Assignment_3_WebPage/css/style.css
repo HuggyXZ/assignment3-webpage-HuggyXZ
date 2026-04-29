@@ -104,3 +104,44 @@ footer {
     font-size: 0.875rem;
     margin-top: 40px;
 }
+
+/* Style for the unordered list inside the About the App section */
+.about-app ul {
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.about-app ul li {
+    margin-bottom: 6px;
+    color: var(--text-color);
+}
+
+/* Add a bit of extra spacing between paragraphs in About Me */
+.about-me p {
+    margin-bottom: 12px;
+}
+
+/* Image section layout */
+.image-section img {
+    display: block;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    max-width: 100%;
+}
+
+/* Next Image button styling */
+.image-section button {
+    margin-top: 12px;
+    padding: 8px 20px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.image-section button:hover {
+    background-color: #256663;
+}
