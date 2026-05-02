@@ -28,22 +28,30 @@
 
     <!-- Main content area -->
     <main>
-        <!-- Login area -->
+        <!-- Login section - restricts access to the task management page -->
         <section>
             <h2>Login</h2>
-            <p>This page will include a login system to restrict access to study tasks.</p>
+            <form>
+                <label>Username</label>
+                <input type="text">
+
+                <label>Password</label>
+                <input type="password">
+
+                <button type="submit">Login</button>
+            </form>
         </section>
 
-        <!-- Task management form area -->
+        <!-- Task management section - hidden until user logs in -->
         <section>
             <h2>Study Task Management</h2>
-            <p>This page will allow users to create, update, delete, and view study tasks.</p>
+            <p>Please log in to manage your tasks.</p>
         </section>
 
-        <!-- Task list area -->
+        <!-- Task list section -->
         <section>
             <h2>Current Tasks</h2>
-            <p>The list or table of tasks will be displayed here in a later step.</p>
+            <p>No tasks yet.</p>
         </section>
     </main>
 
