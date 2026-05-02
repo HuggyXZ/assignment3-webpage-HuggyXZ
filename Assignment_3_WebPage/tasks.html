@@ -29,27 +29,27 @@
     <!-- Main content area -->
     <main>
         <!-- Login section - restricts access to the task management page -->
-        <section>
+        <section id="loginSection">
             <h2>Login</h2>
-            <form>
-                <label>Username</label>
-                <input type="text">
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
 
-                <label>Password</label>
-                <input type="password">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
 
                 <button type="submit">Login</button>
             </form>
         </section>
 
         <!-- Task management section - hidden until user logs in -->
-        <section>
+        <section id="taskSection" class="hidden">
             <h2>Study Task Management</h2>
             <p>Please log in to manage your tasks.</p>
         </section>
 
         <!-- Task list section -->
-        <section>
+        <section id="taskListSection" class="hidden">
             <h2>Current Tasks</h2>
             <p>No tasks yet.</p>
         </section>
