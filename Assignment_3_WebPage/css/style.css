@@ -5,13 +5,14 @@
 :root {
     --base-color: #1e2d4a;       /* Navy - used for header, footer, headings */
     --accent-color: #2e7d7a;     /* Teal - used for buttons and links */
-    --dark-accent-color: #256663; /* Darker teal - hover state */
     --accent-red: #9b2b2b;       /* Red - used for delete actions and warnings */
     --background-color: #f5f0e8; /* Beige - main page background */
     --surface-color: #ffffff;    /* White - cards and section backgrounds */
     --text-color: #1a1a1a;       /* Near black - main body text */
     --text-muted: #6b6b6b;       /* Grey - secondary or placeholder text */
     --border-color: #cccccc;     /* Light grey - borders and dividers */
+    --dark-accent-color: #256663; /* Darker teal - hover state */
+    --dark-accent-red: #7a2020; /* Darker red - hover state */
 }
 
 /* Basic reset so browsers display things consistently */
@@ -190,6 +191,22 @@ button {
 
 button:hover {
     background-color: var(--dark-accent-color);
+}
+
+/* Cancel button style */
+#cancelBtn {
+    background-color: var(--accent-red);
+}
+
+#cancelBtn:hover {
+    background-color: var(--dark-accent-red);
+}
+
+/* Side-by-side layout for form action buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 /* Hides sections until user logs in */
