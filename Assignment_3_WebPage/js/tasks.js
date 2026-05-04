@@ -6,7 +6,7 @@
 const VALID_USERNAME = "studentdemo1";
 const VALID_PASSWORD = "passdemo1";
 
-// Get references to the login section
+// Get references to the login section elements
 const loginSection = document.getElementById("loginSection");
 const loginForm = document.getElementById("loginForm");
 
@@ -32,39 +32,72 @@ loginForm.addEventListener("submit", function(e) {
 // Store tasks in an array
 const tasks = [];
 
-// Get the task form and table area
-const taskForm = document.getElementById("taskForm");
+// Get references to the task section elements
+const taskSection = document.getElementById("taskSection");
 const taskListSection = document.getElementById("taskListSection");
+const taskForm = document.getElementById("taskForm");
 const cancelBtn = document.getElementById("cancelBtn");
 
-// When the task form is submitted, save the task
+// Rebuilds the whole task table from the tasks array
+function renderTasks() {
+    taskListSection.innerHTML = "<h2>Current Tasks</h2>";
+
+    if (tasks.length === 0) {
+        taskListSection.innerHTML += "<p>No tasks yet.</p>";
+        return;
+    }
+
+    const table = document.createElement("table");
+    table.id = "taskTable";
+
+    // Header row
+    table.innerHTML = `
+        <tr>
+            <th>Title</th>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Due Date</th>
+            <th>Description</th>
+            <th>Notes</th>
+        </tr>
+    `;
+
+    // One row per task
+    tasks.forEach(function(task) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${task.title}</td>
+            <td>${task.code}</td>
+            <td>${task.name}</td>
+            <td>${task.due}</td>
+            <td>${task.desc}</td>
+            <td>${task.notes}</td>
+        `;
+        table.appendChild(row);
+    });
+
+    taskListSection.appendChild(table);
+}
+
+// When the task form is submitted, save the task and re-render
 taskForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    // Read values from the form
-    const title = document.getElementById("taskTitle").value;
-    const code = document.getElementById("courseCode").value;
-    const name = document.getElementById("courseName").value;
-    const due = document.getElementById("dueDate").value;
-    const desc = document.getElementById("description").value;
-    const notes = document.getElementById("notes").value;
+    const newTask = {
+        title: document.getElementById("taskTitle").value,
+        code:  document.getElementById("courseCode").value,
+        name:  document.getElementById("courseName").value,
+        due:   document.getElementById("dueDate").value,
+        desc:  document.getElementById("description").value,
+        notes: document.getElementById("notes").value
+    };
 
-    // Build a task object and push it to the array
-    const newTask = { title, code, name, due, desc, notes };
     tasks.push(newTask);
-
-    // Add the task to the table
-    taskListSection.innerHTML = "<h2>Current Tasks</h2>";
-    const table = document.createElement("table");
-    const row = document.createElement("tr");
-    row.innerHTML = "<td>" + newTask.title + "</td><td>" + newTask.code + "</td><td>" + newTask.due + "</td>";
-    table.appendChild(row);
-    taskListSection.appendChild(table);
-
     taskForm.reset();
+    renderTasks();
 });
 
-// Cancle adding a task
+// Cancel clears the form fields
 cancelBtn.addEventListener("click", function() {
-    taskSection.classList.add("hidden");
+    taskForm.reset();
 });
