@@ -141,42 +141,6 @@ footer {
     max-width: 100%;
 }
 
-/* Next Image button styling */
-.image-section button {
-    margin-top: 12px;
-    padding: 8px 20px;
-    background-color: var(--accent-color);
-    color: var(--surface-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-.image-section button:hover {
-    background-color: var(--dark-accent-color);
-}
-
-/* Form layout - used for the login form and task form */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-}
-
-form label {
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-form input, form textarea, form select {
-    padding: 8px 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
 /* General button style */
 button {
     padding: 8px 18px;
@@ -207,9 +171,4 @@ button:hover {
     display: flex;
     gap: 10px;
     margin-top: 4px;
-}
-
-/* Hides sections until user logs in */
-.hidden {
-    display: none;
 }

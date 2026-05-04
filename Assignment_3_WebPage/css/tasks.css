@@ -1,0 +1,51 @@
+/* tasks.css - styles specific to the Tasks page */
+
+/* Form layout - used for the login form and task form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+form label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+form input, form textarea, form select {
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Hides sections until user logs in */
+.hidden {
+    display: none;
+}
+
+/* Table layout - used for the task table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.95rem;
+}
+
+th {
+    background-color: var(--base-color);
+    color: var(--surface-color);
+    padding: 10px 12px;
+    text-align: left;
+}
+
+td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+tr:nth-child(even) td {
+    background-color: var(--background-color);
+}
