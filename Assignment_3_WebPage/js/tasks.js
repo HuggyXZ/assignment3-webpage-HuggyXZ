@@ -92,15 +92,10 @@ taskForm.addEventListener("submit", function(e) {
         notes: document.getElementById("notes").value
     };
 
-    // Validate that required fields are not empty
-    if (newTask.title == "") {
-        alert("Please enter a task title.");
-    }
-    if (newTask.code == "") {
-        alert("Please enter a course code.");
-    }
-    if (newTask.due == "") {
-        alert("Please enter a due date.");
+    // Validate that required fields are not empty - stop and alert if any are missing
+    if (newTask.title === "" || newTask.code === "" || newTask.due === "") {
+        alert("Please fill in the Task Title, Course Code, and Due Date.");
+        return;
     }
 
     tasks.push(newTask);
