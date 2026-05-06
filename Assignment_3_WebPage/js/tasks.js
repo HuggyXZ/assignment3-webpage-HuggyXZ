@@ -29,8 +29,9 @@ loginForm.addEventListener("submit", function(e) {
 
 // Task management system
 
-// Store tasks in an array
-const tasks = [];
+// Load saved tasks from localStorage, or start with an empty array
+const saved = localStorage.getItem("tasks");
+const tasks = saved ? JSON.parse(saved) : [];
 
 // Get references to the task section elements
 const taskSection = document.getElementById("taskSection");
@@ -99,6 +100,10 @@ taskForm.addEventListener("submit", function(e) {
     }
 
     tasks.push(newTask);
+
+    // Save the updated tasks array to localStorage as a JSON string
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     taskForm.reset();
     renderTasks();
 });
@@ -106,4 +111,9 @@ taskForm.addEventListener("submit", function(e) {
 // Cancel clears the form fields
 cancelBtn.addEventListener("click", function() {
     taskForm.reset();
+});
+
+// When the page finishes loading, render any tasks already saved in localStorage
+document.addEventListener("DOMContentLoaded", function() {
+    renderTasks();
 });
