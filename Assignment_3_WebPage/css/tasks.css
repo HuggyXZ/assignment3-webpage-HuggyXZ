@@ -49,3 +49,10 @@ td {
 tr:nth-child(even) td {
     background-color: var(--background-color);
 }
+
+/* Red asterisk shown after labels for required fields */
+/* The ::after pseudo-element inserts content without changing the HTML */
+label.required::after {
+    content: " *";
+    color: red;
+}
