@@ -75,7 +75,10 @@ function renderTasks() {
             <td>${task.due}</td>
             <td>${task.desc}</td>
             <td>${task.notes}</td>
-            <td><button class="delete-btn" data-index="${i}">Delete</button></td>
+            <td>
+                <button class="edit-btn" data-index="${i}">Edit</button>
+                <button class="delete-btn" data-index="${i}">Delete</button>
+            </td>
         `;
         table.appendChild(row);
     }
@@ -95,6 +98,28 @@ taskListSection.addEventListener("click", function(e) {
             localStorage.setItem("tasks", JSON.stringify(tasks)); // update localStorage
             renderTasks(); // rebuild the table
         }
+    }
+});
+
+// Listen for edit button clicks inside the task list section
+taskListSection.addEventListener("click", function(e) {
+    // Check if the clicked element is an edit button
+    if (e.target.classList.contains("edit-btn")) {
+        const index = parseInt(e.target.getAttribute("data-index"));
+        const task = tasks[index];
+
+        // Pre-fill the form with the task's current values
+        document.getElementById("taskTitle").value  = task.title;
+        document.getElementById("courseCode").value = task.code;
+        document.getElementById("courseName").value = task.name;
+        document.getElementById("dueDate").value    = task.due;
+        document.getElementById("description").value = task.desc;
+        document.getElementById("notes").value      = task.notes;
+
+        // Remove the old task so the re-submitted form replaces it
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        renderTasks();
     }
 });
 
