@@ -60,11 +60,13 @@ function renderTasks() {
             <th>Due Date</th>
             <th>Description</th>
             <th>Notes</th>
+            <th>Actions</th>
         </tr>
     `;
 
-    // One row per task
-    tasks.forEach(function(task) {
+    // One row per task, with a Delete button at the end
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${task.title}</td>
@@ -73,12 +75,28 @@ function renderTasks() {
             <td>${task.due}</td>
             <td>${task.desc}</td>
             <td>${task.notes}</td>
+            <td><button class="delete-btn" data-index="${i}">Delete</button></td>
         `;
         table.appendChild(row);
-    });
-
+    }
     taskListSection.appendChild(table);
 }
+
+// Listen for delete button clicks inside the task list section
+taskListSection.addEventListener("click", function(e) {
+    // Check if the clicked element is a delete button
+    if (e.target.classList.contains("delete-btn")) {
+        const index = parseInt(e.target.getAttribute("data-index"));
+
+        // Ask the user to confirm before deleting
+        const confirmed = confirm("Are you sure you want to delete this task?");
+        if (confirmed) {
+            tasks.splice(index, 1); // remove 1 task at that position
+            localStorage.setItem("tasks", JSON.stringify(tasks)); // update localStorage
+            renderTasks(); // rebuild the table
+        }
+    }
+});
 
 // When the task form is submitted, save the task and re-render
 taskForm.addEventListener("submit", function(e) {
