@@ -156,19 +156,3 @@ button {
 button:hover {
     background-color: var(--dark-accent-color);
 }
-
-/* Cancel button style */
-#cancelBtn {
-    background-color: var(--accent-red);
-}
-
-#cancelBtn:hover {
-    background-color: var(--dark-accent-red);
-}
-
-/* Side-by-side layout for form action buttons */
-.form-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 4px;
-}

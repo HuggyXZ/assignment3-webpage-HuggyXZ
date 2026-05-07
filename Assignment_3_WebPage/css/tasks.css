@@ -1,7 +1,8 @@
 /* tasks.css - styles specific to the Tasks page */
 
 /* Form layout - used for the login form and task form */
-form {
+#loginForm,
+#taskForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -55,4 +56,48 @@ tr:nth-child(even) td {
 label.required::after {
     content: " *";
     color: red;
+}
+
+/* Cancel button style */
+#cancelBtn {
+    background-color: var(--accent-red);
+}
+
+#cancelBtn:hover {
+    background-color: var(--dark-accent-red);
+}
+
+/* Side-by-side layout for form action buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* Style for Edit and Delete buttons inside the task table */
+.edit-btn, .delete-btn {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-right: 4px;
+}
+
+.edit-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: var(--dark-accent-color);
+}
+
+.delete-btn {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: var(--dark-accent-red);
 }

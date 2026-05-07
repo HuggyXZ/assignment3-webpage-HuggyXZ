@@ -85,22 +85,6 @@ function renderTasks() {
     taskListSection.appendChild(table);
 }
 
-// Listen for delete button clicks inside the task list section
-taskListSection.addEventListener("click", function(e) {
-    // Check if the clicked element is a delete button
-    if (e.target.classList.contains("delete-btn")) {
-        const index = parseInt(e.target.getAttribute("data-index"));
-
-        // Ask the user to confirm before deleting
-        const confirmed = confirm("Are you sure you want to delete this task?");
-        if (confirmed) {
-            tasks.splice(index, 1); // remove 1 task at that position
-            localStorage.setItem("tasks", JSON.stringify(tasks)); // update localStorage
-            renderTasks(); // rebuild the table
-        }
-    }
-});
-
 // Listen for edit button clicks inside the task list section
 taskListSection.addEventListener("click", function(e) {
     // Check if the clicked element is an edit button
@@ -120,6 +104,22 @@ taskListSection.addEventListener("click", function(e) {
         tasks.splice(index, 1);
         localStorage.setItem("tasks", JSON.stringify(tasks));
         renderTasks();
+    }
+});
+
+// Listen for delete button clicks inside the task list section
+taskListSection.addEventListener("click", function(e) {
+    // Check if the clicked element is a delete button
+    if (e.target.classList.contains("delete-btn")) {
+        const index = parseInt(e.target.getAttribute("data-index"));
+
+        // Ask the user to confirm before deleting
+        const confirmed = confirm("Are you sure you want to delete this task?");
+        if (confirmed) {
+            tasks.splice(index, 1); // remove 1 task at that position
+            localStorage.setItem("tasks", JSON.stringify(tasks)); // update localStorage
+            renderTasks(); // rebuild the table
+        }
     }
 });
 
