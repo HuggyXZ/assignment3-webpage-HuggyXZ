@@ -1,18 +1,19 @@
-/* Global styles for Study Task Manager
-   Colour palette: navy base, white/beige/grey neutrals, teal and red accents
+/* Global styles for Study Task Manager */
+
+/* Colour palette: navy base, white/beige/grey neutrals, teal and red accents
    Chosen for simplicity, contrast, and readability */
 
 :root {
-    --base-color: #1e2d4a;       /* Navy - used for header, footer, headings */
-    --accent-color: #2e7d7a;     /* Teal - used for buttons and links */
-    --accent-red: #9b2b2b;       /* Red - used for delete actions and warnings */
-    --background-color: #f5f0e8; /* Beige - main page background */
-    --surface-color: #ffffff;    /* White - cards and section backgrounds */
-    --text-color: #1a1a1a;       /* Near black - main body text */
-    --text-muted: #6b6b6b;       /* Grey - secondary or placeholder text */
-    --border-color: #cccccc;     /* Light grey - borders and dividers */
+    --base-color: #1e2d4a;        /* Navy - used for header, footer, headings */
+    --accent-color: #2e7d7a;      /* Teal - used for buttons and links */
+    --accent-red: #9b2b2b;        /* Red - used for delete actions and warnings */
+    --background-color: #f5f0e8;  /* Beige - main page background */
+    --surface-color: #ffffff;     /* White - cards and section backgrounds */
+    --text-color: #1a1a1a;        /* Near black - main body text */
+    --text-muted: #6b6b6b;        /* Grey - secondary or placeholder text */
+    --border-color: #cccccc;      /* Light grey - borders and dividers */
     --dark-accent-color: #256663; /* Darker teal - hover state */
-    --dark-accent-red: #7a2020; /* Darker red - hover state */
+    --dark-accent-red: #7a2020;   /* Darker red - hover state */
 }
 
 /* Basic reset so browsers display things consistently */
@@ -114,31 +115,6 @@ footer {
     padding: 16px 20px;
     font-size: 0.875rem;
     margin-top: 40px;
-}
-
-/* Style for the unordered list inside the About the App section */
-.about-app ul {
-    margin-top: 8px;
-    margin-left: 20px;
-}
-
-.about-app ul li {
-    margin-bottom: 6px;
-    color: var(--text-color);
-}
-
-/* Add a bit of extra spacing between paragraphs in About Me */
-.about-me p {
-    margin-bottom: 12px;
-}
-
-/* Image section layout */
-.image-section img {
-    display: block;
-    margin-top: 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    max-width: 100%;
 }
 
 /* General button style */

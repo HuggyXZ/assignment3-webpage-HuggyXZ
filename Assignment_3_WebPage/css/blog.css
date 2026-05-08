@@ -1,0 +1,19 @@
+/* blog.css - styles specific to the Blog page */
+
+/* Table styling used on the blog page project plan */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--base-color);
+    color: white;
+}
