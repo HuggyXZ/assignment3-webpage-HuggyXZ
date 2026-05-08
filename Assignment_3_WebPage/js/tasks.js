@@ -160,3 +160,16 @@ cancelBtn.addEventListener("click", function() {
 document.addEventListener("DOMContentLoaded", function() {
     renderTasks();
 });
+
+// Show the current date and time at the bottom of the page
+function updateDateTime() {
+    const dateTimeText = document.getElementById("currentDateTime");
+    const now = new Date();
+    dateTimeText.textContent = now.toLocaleString();
+}
+
+// Update once when the page loads
+updateDateTime();
+
+// Update every second
+setInterval(updateDateTime, 1000);
