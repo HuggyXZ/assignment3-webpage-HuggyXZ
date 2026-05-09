@@ -36,7 +36,7 @@ th {
     margin-top: 16px;
     margin-bottom: 6px;
     font-size: 0.95rem;
-    color: var(--text-muted);
+    color: var(--accent-red);
 }
 
 /* Code block styling */
@@ -71,4 +71,16 @@ th {
 
 .blog-entry ul li {
     margin-bottom: 6px;
+}
+
+/* Figure caption below screenshots */
+figure {
+    margin-top: 8px;
+}
+
+figcaption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-style: italic;
 }

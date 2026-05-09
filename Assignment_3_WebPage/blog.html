@@ -78,7 +78,10 @@
                 <p><strong>Date and Time Encountered:</strong> 3 May 2026, 12:17 PM</p>
 
                 <h4>Screenshot of Error</h4>
-                <img src="assets/images/error1.png" alt="Screenshot showing only the latest task appearing in the list" width="600">
+                <figure>
+                    <img src="assets/images/error1.png" alt="Screenshot showing only the latest task appearing in the list" width="600">
+                    <figcaption>Figure 1. Screenshot showing only the latest task appearing in the list.</figcaption>
+                </figure>
 
                 <h4>Code That Caused the Issue</h4>
                 <pre><code>
@@ -102,7 +105,10 @@ taskListSection.appendChild(table);
                 <p><strong>Date and Time Resolved:</strong> 4 May 2026, 10:23 AM</p>
 
                 <h4>Screenshot of Fix</h4>
-                <img src="assets/images/fix1.png" alt="Screenshot showing all tasks listed correctly after the fix" width="600">
+                <figure>
+                    <img src="assets/images/fix1.png" alt="Screenshot showing the full task list rendering correctly after fix" width="600">
+                    <figcaption>Figure 2. Screenshot showing the full task list rendering correctly after the fix.</figcaption>
+                </figure>
 
                 <h4>Corrected Code</h4>
                 <pre><code>
@@ -134,7 +140,10 @@ taskForm.addEventListener("submit", function(e) {
                 <p><strong>Date and Time Encountered:</strong> 6 May 2026, 9:40 AM</p>
 
                 <h4>Screenshot of Error</h4>
-                <img src="assets/images/error2.png" alt="Screenshot showing empty task being submitted" width="600">
+                <figure>
+                    <img src="assets/images/error2.png" alt="Screenshot showing tasks with missing required fields being submitted even after validation alerts." width="600">
+                    <figcaption>Figure 3. Screenshot showing tasks with missing required fields being submitted even after validation alerts.</figcaption>
+                </figure>
 
                 <h4>Code That Caused the Issue</h4>
                 <pre><code>
@@ -160,7 +169,10 @@ if (newTask.due == "") {
                 <p><strong>Date and Time Resolved:</strong> 6 May 2026, 9:53 AM</p>
 
                 <h4>Screenshot of Fix</h4>
-                <img src="assets/images/fix2.png" alt="Screenshot showing validation alert working correctly" height="600">
+                <figure>
+                    <img src="assets/images/fix2.png" alt="Screenshot showing the validation alert correctly blocking empty task submission" height="600">
+                    <figcaption>Figure 4. Screenshot showing the validation alert correctly blocking empty task submission.</figcaption>
+                </figure>
 
                 <h4>Corrected Code</h4>
                 <pre><code>
@@ -178,7 +190,10 @@ if (newTask.title === "" || newTask.code === "" || newTask.due === "") {
                 <p><strong>Date and Time Encountered:</strong> 4 May 2026, 11:34 AM</p>
 
                 <h4>Screenshot of Error</h4>
-                <img src="assets/images/error3.png" alt="Screenshot showing empty task list after page refresh" width="600">
+                <figure>
+                    <img src="assets/images/error3.png" alt="Screenshot showing an empty task list after the page was refreshed" width="600">
+                    <figcaption>Figure 5. Screenshot showing an empty task list after the page was refreshed.</figcaption>
+                </figure>
 
                 <h4>Code That Caused the Issue</h4>
                 <pre><code>
@@ -197,7 +212,10 @@ const tasks = [];
                 <p><strong>Date and Time Resolved:</strong> 6 May 2026, 11:41 AM</p>
 
                 <h4>Screenshot of Fix</h4>
-                <img src="assets/images/fix3.png" alt="Screenshot showing tasks still present after page refresh" width="600">
+                <figure>
+                    <img src="assets/images/fix3.png" alt="Screenshot showing tasks still present in the list after a page refresh" width="600">
+                    <figcaption>Figure 6. Screenshot showing tasks still present in the list after a page refresh.</figcaption>
+                </figure>
 
                 <h4>Corrected Code</h4>
                 <pre><code>
