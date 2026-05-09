@@ -2,7 +2,6 @@
 
 /* Colour palette: navy base, white/beige/grey neutrals, teal and red accents
    Chosen for simplicity, contrast, and readability */
-
 :root {
     --base-color: #1e2d4a;        /* Navy - used for header, footer, headings */
     --accent-color: #2e7d7a;      /* Teal - used for buttons and links */
