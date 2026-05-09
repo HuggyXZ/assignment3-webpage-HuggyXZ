@@ -127,6 +127,50 @@ taskForm.addEventListener("submit", function(e) {
 });
                 </code></pre>
             </article>
+
+            <!-- Error 2 -->
+            <article class="blog-entry">
+                <h3>Error 2 — Form Validation Not Stopping Submission</h3>
+                <p><strong>Date and Time Encountered:</strong> 6 May 2026, 9:40 AM</p>
+
+                <h4>Screenshot of Error</h4>
+                <img src="assets/images/error2.png" alt="Screenshot showing empty task being submitted" width="600">
+
+                <h4>Code That Caused the Issue</h4>
+                <pre><code>
+// Multiple separate if blocks — all ran independently, no return to stop submission
+if (newTask.title == "") {
+    alert("Please enter a task title.");
+}
+if (newTask.code == "") {
+    alert("Please enter a course code.");
+}
+if (newTask.due == "") {
+    alert("Please enter a due date.");
+}
+                </code></pre>
+
+                <h4>Troubleshooting Explanation</h4>
+                <ul>
+                    <li><strong>Possible cause:</strong> Three separate <code>if</code> blocks ran one after another with no <code>return</code> statement. This caused up to three alerts to fire at once and still allowed an empty task to be saved.</li>
+                    <li><strong>How it was resolved:</strong> All three checks were combined into one <code>if</code> statement using <code>||</code> (OR). A <code>return</code> was added so the function stops before saving the task. The comparison was also changed from <code>==</code> to <code>===</code> (strict equality) to avoid unexpected type coercion.</li>
+                    <li><strong>Resources used:</strong> MDN Web Docs — <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener noreferrer">Equality comparisons and sameness</a></li>
+                </ul>
+
+                <p><strong>Date and Time Resolved:</strong> 6 May 2026, 9:53 AM</p>
+
+                <h4>Screenshot of Fix</h4>
+                <img src="assets/images/fix2.png" alt="Screenshot showing validation alert working correctly" height="600">
+
+                <h4>Corrected Code</h4>
+                <pre><code>
+// One combined check with return to stop execution if fields are missing
+if (newTask.title === "" || newTask.code === "" || newTask.due === "") {
+    alert("Please fill in the Task Title, Course Code, and Due Date.");
+    return;
+}
+                </code></pre>
+            </article>
         </section>
     </main>
 
