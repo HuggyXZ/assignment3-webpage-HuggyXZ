@@ -15,7 +15,7 @@ th, td {
 
 th {
     background-color: var(--base-color);
-    color: white;
+    color: var(--surface-color);
 }
 
 /* Each error/fix entry card */

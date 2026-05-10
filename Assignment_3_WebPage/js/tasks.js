@@ -18,14 +18,20 @@ loginForm.addEventListener("submit", function(e) {
     const password = document.getElementById("password").value;
 
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        // Hide login, show task sections
-        loginSection.classList.add("hidden");
-        taskSection.classList.remove("hidden");
-        taskListSection.classList.remove("hidden");
+        // Save login state to sessionStorage so it survives page navigation
+        sessionStorage.setItem("loggedIn", "true");
+        showTaskSections();
     } else {
         alert("Incorrect username or password. Hint: Check the README file.");
     }
 });
+
+// Shows the task sections and hides the login form
+function showTaskSections() {
+    loginSection.classList.add("hidden");
+    taskSection.classList.remove("hidden");
+    taskListSection.classList.remove("hidden");
+}
 
 // Task management system
 
@@ -156,8 +162,12 @@ cancelBtn.addEventListener("click", function() {
     taskForm.reset();
 });
 
-// When the page finishes loading, render any tasks already saved in localStorage
+// When the page finishes loading, check login state and render tasks already saved in localStorage
 document.addEventListener("DOMContentLoaded", function() {
+    // If the user was already logged in this session, skip the login form
+    if (sessionStorage.getItem("loggedIn") === "true") {
+        showTaskSections();
+    }
     renderTasks();
 });
 
