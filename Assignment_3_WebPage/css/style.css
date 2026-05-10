@@ -11,6 +11,7 @@
     --text-color: #1a1a1a;        /* Near black - main body text */
     --text-muted: #6b6b6b;        /* Grey - secondary or placeholder text */
     --border-color: #cccccc;      /* Light grey - borders and dividers */
+    --light-base-color: #2d4a64;  /* Lighter navy - hover state */
     --dark-accent-color: #256663; /* Darker teal - hover state */
     --dark-accent-red: #7a2020;   /* Darker red - hover state */
 }
