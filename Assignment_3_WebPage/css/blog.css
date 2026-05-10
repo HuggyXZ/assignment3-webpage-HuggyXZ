@@ -83,4 +83,5 @@ figcaption {
     color: var(--text-muted);
     margin-top: 4px;
     font-style: italic;
+    margin-bottom: 28px;
 }
