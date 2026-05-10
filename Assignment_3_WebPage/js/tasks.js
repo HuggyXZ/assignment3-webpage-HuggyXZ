@@ -34,6 +34,12 @@ function showTaskSections() {
     taskListSection.classList.remove("hidden");
 }
 
+// Show or hide the Clear Sort button depending on whether a sort is active
+function updateClearSortBtn() {
+    const btn = document.getElementById("clearSortBtn");
+    btn.style.display = sortColumn ? "inline-block" : "none";
+}
+
 // Task management system
 
 // Load saved tasks from localStorage, or start with an empty array
@@ -43,6 +49,9 @@ const tasks = saved ? JSON.parse(saved) : [];
 // Track which column is being sorted and in which direction
 let sortColumn = null;
 let sortAscending = true;
+
+// Keep a copy of the original insertion order so Clear Sort can restore it
+let originalOrder = tasks.slice();
 
 // Track the current search query
 let searchQuery = "";
@@ -141,9 +150,10 @@ function renderTasks() {
     taskListSection.appendChild(table);
 }
 
-// Sorts the tasks array then re-renders the table
+// Sorts a copy of tasks by the active column, then re-renders
 function sortAndRender() {
     if (sortColumn) {
+        // Sort a copy so the original insertion order is preserved
         tasks.sort(function(a, b) {
             const valA = a[sortColumn].toLowerCase();
             const valB = b[sortColumn].toLowerCase();
@@ -153,6 +163,7 @@ function sortAndRender() {
         });
     }
     renderTasks();
+    updateClearSortBtn(); // show button when sort is active
 }
 
 // Listen for edit button clicks inside the task list section
@@ -172,6 +183,7 @@ taskListSection.addEventListener("click", function(e) {
 
         // Remove the old task so the re-submitted form replaces it
         tasks.splice(index, 1);
+        originalOrder = tasks.slice(); // update original order after edit removal
         localStorage.setItem("tasks", JSON.stringify(tasks));
         renderTasks();
     }
@@ -187,6 +199,7 @@ taskListSection.addEventListener("click", function(e) {
         const confirmed = confirm("Are you sure you want to delete this task?");
         if (confirmed) {
             tasks.splice(index, 1); // remove 1 task at that position
+            originalOrder = tasks.slice(); // update original order after deletion
             localStorage.setItem("tasks", JSON.stringify(tasks)); // update localStorage
             renderTasks(); // rebuild the table
         }
@@ -214,6 +227,9 @@ taskForm.addEventListener("submit", function(e) {
 
     tasks.push(newTask);
 
+    // keep original order up to date when new task added
+    originalOrder = tasks.slice(); 
+
     // Save the updated tasks array to localStorage as a JSON string
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
@@ -230,6 +246,20 @@ cancelBtn.addEventListener("click", function() {
 document.getElementById("searchInput").addEventListener("input", function() {
     searchQuery = this.value.toLowerCase();
     renderTasks();
+});
+
+// Clear sort resets the order back to the original insertion order
+document.getElementById("clearSortBtn").addEventListener("click", function() {
+    // Restore tasks array to original insertion order
+    tasks.length = 0;
+    originalOrder.forEach(function(task) { tasks.push(task); });
+
+    // Reset sort state so no column header shows an arrow
+    sortColumn = null;
+    sortAscending = true;
+
+    renderTasks();
+    updateClearSortBtn(); // show button when sort is active
 });
 
 // When the page finishes loading, check login state and render tasks already saved in localStorage
