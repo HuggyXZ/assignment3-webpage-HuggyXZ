@@ -30,6 +30,7 @@ loginForm.addEventListener("submit", function(e) {
 function showTaskSections() {
     loginSection.classList.add("hidden");
     taskSection.classList.remove("hidden");
+    searchBar.classList.remove("hidden");
     taskListSection.classList.remove("hidden");
 }
 
@@ -42,6 +43,9 @@ const tasks = saved ? JSON.parse(saved) : [];
 // Track which column is being sorted and in which direction
 let sortColumn = null;
 let sortAscending = true;
+
+// Track the current search query
+let searchQuery = "";
 
 // Get references to the task section elements
 const taskSection = document.getElementById("taskSection");
@@ -98,9 +102,25 @@ function renderTasks() {
     headerRow.appendChild(actionsTh);
     table.appendChild(headerRow);
 
-    // One row per task
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
+    // Filter tasks by search query (matches title or course code)
+    const filteredTasks = tasks.filter(function(task) {
+        if (searchQuery === "") return true;
+        return task.title.toLowerCase().includes(searchQuery) ||
+               task.code.toLowerCase().includes(searchQuery);
+    });
+
+    // Show a message if nothing matches the search
+    if (filteredTasks.length === 0) {
+        taskListSection.appendChild(table);
+        const noResults = document.createElement("p");
+        noResults.textContent = "No tasks match your search.";
+        taskListSection.appendChild(noResults);
+        return;
+    }
+
+    // One row per filtered task
+    for (let i = 0; i < filteredTasks.length; i++) {
+        const task = filteredTasks[i];
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${task.title}</td>
@@ -202,6 +222,12 @@ taskForm.addEventListener("submit", function(e) {
 // Cancel clears the form fields
 cancelBtn.addEventListener("click", function() {
     taskForm.reset();
+});
+
+// Filter the displayed tasks as the user types in the search bar
+document.getElementById("searchInput").addEventListener("input", function() {
+    searchQuery = this.value.toLowerCase();
+    renderTasks();
 });
 
 // When the page finishes loading, check login state and render tasks already saved in localStorage
