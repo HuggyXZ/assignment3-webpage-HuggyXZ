@@ -106,7 +106,8 @@ function renderTasks() {
     const filteredTasks = tasks.filter(function(task) {
         if (searchQuery === "") return true;
         return task.title.toLowerCase().includes(searchQuery) ||
-               task.code.toLowerCase().includes(searchQuery);
+               task.code.toLowerCase().includes(searchQuery) ||
+               task.name.toLowerCase().includes(searchQuery);
     });
 
     // Show a message if nothing matches the search
@@ -122,6 +123,7 @@ function renderTasks() {
     for (let i = 0; i < filteredTasks.length; i++) {
         const task = filteredTasks[i];
         const row = document.createElement("tr");
+        const originalIndex = tasks.indexOf(task);
         row.innerHTML = `
             <td>${task.title}</td>
             <td>${task.code}</td>
@@ -130,8 +132,8 @@ function renderTasks() {
             <td>${task.desc}</td>
             <td>${task.notes}</td>
             <td>
-                <button class="edit-btn" data-index="${i}">Edit</button>
-                <button class="delete-btn" data-index="${i}">Delete</button>
+                <button class="edit-btn" data-index="${originalIndex}">Edit</button>
+                <button class="delete-btn" data-index="${originalIndex}">Delete</button>
             </td>
         `;
         table.appendChild(row);
