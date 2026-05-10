@@ -39,6 +39,10 @@ function showTaskSections() {
 const saved = localStorage.getItem("tasks");
 const tasks = saved ? JSON.parse(saved) : [];
 
+// Track which column is being sorted and in which direction
+let sortColumn = null;
+let sortAscending = true;
+
 // Get references to the task section elements
 const taskSection = document.getElementById("taskSection");
 const taskListSection = document.getElementById("taskListSection");
@@ -57,20 +61,44 @@ function renderTasks() {
     const table = document.createElement("table");
     table.id = "taskTable";
 
-    // Header row
-    table.innerHTML = `
-        <tr>
-            <th>Title</th>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>Due Date</th>
-            <th>Description</th>
-            <th>Notes</th>
-            <th>Actions</th>
-        </tr>
-    `;
+    // Column definitions — label shown and the key in the task object
+    const columns = [
+        { label: "Title",       key: "title" },
+        { label: "Course Code", key: "code"  },
+        { label: "Course Name", key: "name"  },
+        { label: "Due Date",    key: "due"   },
+        { label: "Description", key: "desc"  },
+        { label: "Notes",       key: "notes" }
+    ];
 
-    // One row per task, with a Delete button at the end
+    // Build header row with clickable sort buttons
+    const headerRow = document.createElement("tr");
+    columns.forEach(function(col) {
+        const th = document.createElement("th");
+        // Show an arrow if this column is the active sort column
+        const arrow = sortColumn === col.key ? (sortAscending ? " ▲" : " ▼") : "";
+        th.textContent = col.label + arrow;
+        th.style.cursor = "pointer";
+        // When clicked, sort by this column
+        th.addEventListener("click", function() {
+            if (sortColumn === col.key) {
+                sortAscending = !sortAscending; // flip direction
+            } else {
+                sortColumn = col.key;
+                sortAscending = true;
+            }
+            sortAndRender();
+        });
+        headerRow.appendChild(th);
+    });
+
+    // Add the Actions column header (not sortable)
+    const actionsTh = document.createElement("th");
+    actionsTh.textContent = "Actions";
+    headerRow.appendChild(actionsTh);
+    table.appendChild(headerRow);
+
+    // One row per task
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         const row = document.createElement("tr");
@@ -89,6 +117,20 @@ function renderTasks() {
         table.appendChild(row);
     }
     taskListSection.appendChild(table);
+}
+
+// Sorts the tasks array then re-renders the table
+function sortAndRender() {
+    if (sortColumn) {
+        tasks.sort(function(a, b) {
+            const valA = a[sortColumn].toLowerCase();
+            const valB = b[sortColumn].toLowerCase();
+            if (valA < valB) return sortAscending ? -1 : 1;
+            if (valA > valB) return sortAscending ? 1 : -1;
+            return 0;
+        });
+    }
+    renderTasks();
 }
 
 // Listen for edit button clicks inside the task list section
