@@ -85,3 +85,26 @@ figcaption {
     font-style: italic;
     margin-bottom: 28px;
 }
+
+/* Mobile: narrow the code blocks and article padding */
+@media (max-width: 576px) {
+    .blog-entry {
+        padding: 10px;
+    }
+
+    pre {
+        overflow-x: auto;
+        font-size: 0.8rem;
+    }
+
+    figure img {
+        width: 100%;
+    }
+}
+
+/* Tablet and above */
+@media (min-width: 577px) {
+    .blog-entry {
+        padding: 20px;
+    }
+}

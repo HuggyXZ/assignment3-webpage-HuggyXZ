@@ -132,3 +132,44 @@ button {
 button:hover {
     background-color: var(--dark-accent-color);
 }
+
+/* Make images responsive — scales down on small screens */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile: up to 576px */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Tablet: 577px to 768px */
+@media (min-width: 577px) and (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Desktop: 769px and above */
+@media (min-width: 769px) {
+    nav {
+        flex-direction: row;
+    }
+}

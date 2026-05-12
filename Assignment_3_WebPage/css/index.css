@@ -24,3 +24,27 @@
     border: 1px solid var(--border-color);
     max-width: 100%;
 }
+
+/* Mobile: tighten padding on the main content sections */
+@media (max-width: 576px) {
+    .about-app,
+    .about-me,
+    .image-section {
+        padding: 10px;
+    }
+
+    .about-app h2,
+    .about-me h2,
+    .image-section h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablet and above */
+@media (min-width: 577px) {
+    .about-app,
+    .about-me,
+    .image-section {
+        padding: 20px;
+    }
+}

@@ -153,3 +153,47 @@ label.required::after {
 .delete-btn:hover {
     background-color: var(--dark-accent-red);
 }
+
+/* Mobile: stack the search bar and form inputs vertically */
+@media (max-width: 576px) {
+    #searchBar {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    #clearSortBtn {
+        width: 100%;
+    }
+
+    /* Make the task table scroll horizontally on small screens */
+    #taskListSection {
+        overflow-x: auto;
+    }
+
+    #taskTable {
+        min-width: 600px;
+    }
+
+    /* Stack form fields */
+    #taskForm label,
+    #taskForm input,
+    #taskForm textarea {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Tablet and above: table fits normally */
+@media (min-width: 577px) {
+    #searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+}

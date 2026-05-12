@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showTaskSections();
     }
     renderTasks();
+    updateClearSortBtn(); // hidden by default on load
 });
 
 // Show the current date and time at the bottom of the page
