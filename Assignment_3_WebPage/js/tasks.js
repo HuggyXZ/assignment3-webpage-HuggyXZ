@@ -211,12 +211,12 @@ taskForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
     const newTask = {
-        title: document.getElementById("taskTitle").value,
-        code:  document.getElementById("courseCode").value,
-        name:  document.getElementById("courseName").value,
+        title: document.getElementById("taskTitle").value.trim(),
+        code:  document.getElementById("courseCode").value.trim(),
+        name:  document.getElementById("courseName").value.trim(),
         due:   document.getElementById("dueDate").value,
-        desc:  document.getElementById("description").value,
-        notes: document.getElementById("notes").value
+        desc:  document.getElementById("description").value.trim(),
+        notes: document.getElementById("notes").value.trim()
     };
 
     // Validate that required fields are not empty - stop and alert if any are missing

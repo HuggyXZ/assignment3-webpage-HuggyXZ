@@ -19,9 +19,9 @@ const btn = document.getElementById("cycleBtn");
 let current = 0;
 
 // When the button is clicked, move to the next image
-btn.onclick = function() {
+btn.addEventListener("click", function() {
     // Loop back to the first image after the last one
     current = (current + 1) % images.length;
     img.src = images[current].src;
     img.alt = images[current].alt; // update alt text for accessibility
-};
+});
