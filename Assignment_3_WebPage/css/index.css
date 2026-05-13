@@ -17,12 +17,32 @@
 }
 
 /* Image section layout */
-.image-section img {
+/* Figure fills the full width of the section */
+.study-figure {
     display: block;
     margin-top: 12px;
+    width: 100%;
+}
+
+.study-figure img {
+    display: block;
+    width: 100%;           /* stretch to fill the section */
+    height: 400px;         /* fixed height so all images are the same */
+    object-fit: cover;     /* crops to fill without stretching */
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    max-width: 100%;
+}
+
+/* Citation text below the image */
+.study-figure figcaption {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: right;
+}
+
+.study-figure figcaption a {
+    color: var(--text-muted);
 }
 
 /* Mobile: tighten padding on the main content sections */
