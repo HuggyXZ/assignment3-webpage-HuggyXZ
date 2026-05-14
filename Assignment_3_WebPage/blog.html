@@ -206,7 +206,10 @@ const tasks = [];
                 <ul>
                     <li><strong>Possible cause:</strong> The tasks array only existed in memory. Every time the page was refreshed or closed, JavaScript's memory was cleared and all tasks disappeared.</li>
                     <li><strong>How it was resolved:</strong> <code>localStorage</code> was used to save the tasks array as a JSON string using <code>JSON.stringify()</code>. When the page loads, <code>localStorage.getItem()</code> retrieves the saved string and <code>JSON.parse()</code> converts it back into a JavaScript array.</li>
-                    <li><strong>Resources used:</strong> Course material — "Storing Persistent Data using LocalStorage and JSON" from the Additional self-guided learning activities.</li>
+                    <li><strong>Resources used:</strong>
+                        Course material — "Storing Persistent Data using LocalStorage and JSON" from the Additional self-guided learning activities;
+                        MDN Web Docs — <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener noreferrer">Window: localStorage property</a>
+                    </li>
                 </ul>
 
                 <p><strong>Date and Time Resolved:</strong> 6 May 2026, 11:41 AM</p>
