@@ -1,0 +1,53 @@
+/* ethics.css - styles specific to the Ethics page */
+
+/* Space out each section on the page */
+main section {
+    margin-bottom: 30px;
+}
+
+/* Add spacing below headings */
+main section h2 {
+    margin-bottom: 12px;
+}
+
+main section h3 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: var(--base-color);
+}
+
+/* Keep paragraphs easy to read */
+main section p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* Style bullet point lists */
+main section ul {
+    margin-left: 20px;
+    margin-bottom: 14px;
+}
+
+main section li {
+    margin-bottom: 8px;
+}
+
+/* Highlight strong text a little */
+main section strong {
+    color: var(--base-color);
+}
+
+/* Mobile spacing */
+@media (max-width: 576px) {
+    main section {
+        padding: 10px;
+    }
+
+    main section h2 {
+        font-size: 1.3rem;
+    }
+
+    main section h3 {
+        font-size: 1.05rem;
+    }
+}
