@@ -76,6 +76,7 @@ label.required::after {
 
 /* Search bar above the task table */
 #searchBar {
+    display: none;
     color: var(--text-muted);
     font-size: 1.2rem;
     margin-bottom: 12px;
@@ -156,7 +157,7 @@ label.required::after {
 
 /* Mobile: stack the search bar and form inputs vertically */
 @media (max-width: 576px) {
-    #searchBar {
+    #searchBar:not(.hidden) {
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -190,7 +191,7 @@ label.required::after {
 
 /* Tablet and above: table fits normally */
 @media (min-width: 577px) {
-    #searchBar {
+    #searchBar:not(.hidden) {
         display: flex;
         flex-direction: row;
         align-items: center;
