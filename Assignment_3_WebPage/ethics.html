@@ -47,6 +47,57 @@
                 These choices show an effort to use data responsibly, keep the design simple, and protect user information within the limits of a beginner-level web project.
             </p>
         </section>
+
+        <section>
+            <h2>Ethical Decision-Making for the Login Design</h2>
+            <p>
+                The following applies the Markkula Center's ethical decision-making framework
+                to the login system used in this application.
+            </p>
+
+            <h3>1. Recognize the Ethical Issue</h3>
+            <p>
+                The current login uses a hard-coded username and password written directly
+                in JavaScript. While it limits access to the task page, anyone who views the
+                source code can find the credentials. This raises a concern about whether this
+                design adequately protects user privacy and security.
+            </p>
+
+            <h3>2. Get the Facts</h3>
+            <ul>
+                <li>The login credentials are stored in plain text inside a JavaScript file.</li>
+                <li>This application is an assignment project with no real server or database.</li>
+                <li>Tasks are saved in the user's own browser using localStorage, so no data is sent externally.</li>
+                <li>A more secure approach would require server-side authentication and proper password hashing.</li>
+            </ul>
+
+            <h3>3. Evaluate Alternative Actions using Ethical Lenses</h3>
+            <ul>
+                <li><strong>Rights Lens — Fail:</strong> The current design does not fully protect the user's right to privacy because credentials are stored in plain text and can be found in the source code.</li>
+                <li><strong>Justice Lens — Pass:</strong> All users are treated equally and given the same access under the same login conditions, which is fair.</li>
+                <li><strong>Utilitarian Lens — Pass:</strong> For an assignment project, the simple login is practical and easy to understand, providing more benefit than harm in this limited context.</li>
+                <li><strong>Common Good Lens — Fail:</strong> A hard-coded login does not benefit the broader community, as it sets a poor example for secure design in real applications.</li>
+                <li><strong>Virtue Lens — Pass:</strong> Adding restricted access shows some responsibility and intention to limit who can use the task page, which reflects good development habits.</li>
+                <li><strong>Care Ethics Lens — Fail:</strong> The design does not go far enough to protect users from security risks, showing a lack of full care for user safety.</li>
+            </ul>
+
+            <h3>4. Make a Decision and Test It</h3>
+            <p>
+                Overall, this login decision is <strong>partly ethical</strong>. A more ethical
+                improvement would be to use a secure server, hashed passwords, and proper
+                authentication so user login details are protected more responsibly.
+            </p>
+
+            <h3>5. Act and Reflect on the Outcome</h3>
+            <p>
+                For this assignment project, the hard-coded login is acceptable as a simple
+                demonstration of access control. However, reflecting on this decision shows
+                that real-world applications must prioritise secure authentication. If this
+                project were developed further, the login system would need to be rebuilt
+                with a proper server and secure password handling before it could be
+                responsibly deployed to real users.
+            </p>
+        </section>
     </main>
 
     <!-- Footer section -->
