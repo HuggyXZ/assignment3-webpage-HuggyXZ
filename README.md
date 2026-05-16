@@ -1,6 +1,7 @@
 # Study Task Manager
 
-**Author:** Hoang Huy Nguyen
+**Author:** Hoang Huy Nguyen\
+**Published:** 19/05/2026
 
 ## Project Description
 
@@ -15,7 +16,7 @@ The website includes four pages:
 
 ## How to Install and Run the Project
 
-No installation is required. The project runs directly in a web browser.
+No installation is required. The project runs directly in a web browser and works on desktop and mobile devices.
 
 1. Clone or download the repository from GitHub
 2. Open the `Assignment_3_WebPage` folder
@@ -56,6 +57,8 @@ The Tasks page is protected by a simple login. Use the following credentials to 
 7. Click the **Edit** button on any task row to modify the task details in the form, then click **Add Task** to update it
 8. Click **Delete** on any task row and then click **OK** to remove it
 
+- The live clock at the bottom displays the current date and time
+
 ### Blog Page
 
 - Read the project plan and the 3-week sprint table
@@ -65,3 +68,31 @@ The Tasks page is protected by a simple login. Use the following credentials to 
 
 - Read the ethics and privacy reflection
 - Read the ethical decision-making analysis for the login design using the Markkula framework and six ethical lenses
+
+## Tasks Page Screenshots
+
+## Credits
+
+- **Author:** Hoang Huy Nguyen — Adelaide University, 2026
+- **Images:** Sourced from [Pexels](https://www.pexels.com) (see References below)
+- **Tools used:** Visual Studio Code, GitHub.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+You are free to use, copy, modify, and distribute this project for personal or educational purposes with attribution.
+
+## References
+
+hu, jason. (2025, June 12). _Students Studying in a Library Setting_ [Photograph]. Pexels. https://www.pexels.com/photo/students-studying-in-a-library-setting-32526073/
+
+Mikhail Nilov. (2021, August 12). _A Woman and a Man Taking Notes While Reading a Book_ [Photograph]. Pexels. https://www.pexels.com/photo/a-woman-and-a-man-taking-notes-while-reading-a-book-9158769/
+
+PHAT, C. T. (2023, November 30). _Person Wearing Hoodie Writing in Notebook_ [Photograph]. Pexels. https://www.pexels.com/photo/person-wearing-hoodie-writing-in-notebook-19314243/
+
+RDNE Stock project. (2021, March 10). _Student Cheating During an Exam_ [Photograph]. Pexels. https://www.pexels.com/photo/student-cheating-during-an-exam-7092490/
+
+www.kaboompics.com. (2020a, October 13). _A Woman Doing Her Homework_ [Photograph]. Pexels. https://www.pexels.com/photo/a-woman-doing-her-homework-5311612/
+
+www.kaboompics.com. (2020b, October 13). _A Woman in White Shirt Studying_ [Photograph]. Pexels. https://www.pexels.com/photo/a-woman-in-white-shirt-studying-5311453/
