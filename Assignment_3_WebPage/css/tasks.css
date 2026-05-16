@@ -155,6 +155,22 @@ label.required::after {
     background-color: var(--dark-accent-red);
 }
 
+/* Logout button container */
+#logoutContainer:not(.hidden) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+/* Logout button style */
+#logoutBtn {
+    background-color: var(--accent-red);
+}
+
+#logoutBtn:hover {
+    background-color: var(--dark-accent-red);
+}
+
 /* Mobile: stack the search bar and form inputs vertically */
 @media (max-width: 576px) {
     #searchBar:not(.hidden) {

@@ -32,6 +32,7 @@ function showTaskSections() {
     taskSection.classList.remove("hidden");
     searchBar.classList.remove("hidden");
     taskListSection.classList.remove("hidden");
+    logoutContainer.classList.remove("hidden");
 }
 
 // Show or hide the Clear Sort button depending on whether a sort is active
@@ -260,6 +261,12 @@ document.getElementById("clearSortBtn").addEventListener("click", function() {
 
     renderTasks();
     updateClearSortBtn(); // show button when sort is active
+});
+
+// Log out button - clears session and reloads the page back to login
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    sessionStorage.removeItem("loggedIn");
+    location.reload();
 });
 
 // When the page finishes loading, check login state and render tasks already saved in localStorage
