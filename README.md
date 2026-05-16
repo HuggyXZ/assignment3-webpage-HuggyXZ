@@ -56,6 +56,7 @@ The Tasks page is protected by a simple login. Use the following credentials to 
 6. Click the **Clear Sort** button to remove sorting and return to the default order (sorted by time added)
 7. Click the **Edit** button on any task row to modify the task details in the form, then click **Add Task** to update it
 8. Click **Delete** on any task row and then click **OK** to remove it
+9. Click **Log Out** to end your session
 
 - The live clock at the bottom displays the current date and time
 

@@ -134,6 +134,14 @@ label.required::after {
     background-color: var(--base-color);
 }
 
+/* Prevent long unbroken text from overflowing table cells */
+#taskTable td {
+    word-break: break-word;    /* break long words/strings that have no spaces */
+    overflow-wrap: break-word;
+    white-space: normal;       /* allow text to wrap onto multiple lines */
+    max-width: 200px;
+}
+
 /* Style for Edit and Delete buttons inside the task table */
 .edit-btn, .delete-btn {
     padding: 4px 10px;
