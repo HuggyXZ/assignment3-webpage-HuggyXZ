@@ -179,7 +179,7 @@ if (newTask.due == "") {
 
                 <h4>Screenshot of Fix</h4>
                 <figure>
-                    <img src="assets/images/fix2.png" alt="Screenshot showing the validation alert correctly blocking empty task submission" height="600">
+                    <img src="assets/images/fix2.png" alt="Screenshot showing the validation alert correctly blocking empty task submission" width="600">
                     <figcaption>Figure 2.2. Screenshot showing the validation alert correctly blocking empty task submission.</figcaption>
                 </figure>
 
@@ -315,6 +315,44 @@ for (let i = 0; i &lt; filteredTasks.length; i++) {
         &lt;button class="delete-btn" data-index="${originalIndex}"&gt;Delete&lt;/button&gt;
     `;
     table.appendChild(row);
+}
+                </code></pre>
+            </article>
+
+            <!-- Error 5 -->
+            <article class="blog-entry">
+                <h3>Error 5 - Long Text Overflowing Task Table</h3>
+                <p><strong>Date and Time Encountered:</strong> 16 May 2026, 2:52 PM</p>
+
+                <h4>Screenshot of Error</h4>
+                <figure>
+                    <img src="assets/images/error5.png" alt="Screenshot showing long task text overflowing outside the Current Tasks table" width="600">
+                    <figcaption>Figure 5.1. Screenshot showing tasks with long text overflowing outside the Current Tasks table.</figcaption>
+                </figure>
+
+                <h4>Troubleshooting Explanation</h4>
+                <ul>
+                    <li><strong>Possible cause:</strong> Some task fields contained very long text, so the browser kept the text on one line and the table stretched outside its container.</li>
+                    <li><strong>How it was resolved:</strong> CSS rules were added to the table cells so long words can break and wrap onto the next line instead of overflowing beyond the table area.</li>
+                    <li><strong>Resources used:</strong> MDN Web Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap" target="_blank" rel="noopener noreferrer">overflow-wrap</a></li>
+                </ul>
+
+                <p><strong>Date and Time Resolved:</strong> 16 May 2026, 3:27 PM</p>
+
+                <h4>Screenshot of Fix</h4>
+                <figure>
+                    <img src="assets/images/fix5.png" alt="Screenshot showing long task text wrapping correctly inside the Current Tasks table" width="600">
+                    <figcaption>Figure 5.2. Screenshot showing tasks with long text wrapping correctly inside the Current Tasks table.</figcaption>
+                </figure>
+
+                <h4>Corrected Code</h4>
+                <pre><code>
+/* Prevent long unbroken text from overflowing table cells */
+#taskTable td {
+    word-break: break-word;    /* break long words/strings that have no spaces */
+    overflow-wrap: break-word;
+    white-space: normal;       /* allow text to wrap onto multiple lines */
+    max-width: 200px;
 }
                 </code></pre>
             </article>
