@@ -57,6 +57,9 @@ let originalOrder = tasks.slice();
 // Track the current search query
 let searchQuery = "";
 
+// Tracks the index of the task currently being edited (-1 means no edit in progress)
+let editingIndex = -1;
+
 // Get references to the task section elements
 const taskSection = document.getElementById("taskSection");
 const taskListSection = document.getElementById("taskListSection");
@@ -171,22 +174,30 @@ function sortAndRender() {
 taskListSection.addEventListener("click", function(e) {
     // Check if the clicked element is an edit button
     if (e.target.classList.contains("edit-btn")) {
+
+        // Block editing another task while one is already being edited
+        if (editingIndex !== -1) {
+            alert("Please confirm or cancel the current edit before editing another task.");
+            return;
+        }
+
         const index = parseInt(e.target.getAttribute("data-index"));
         const task = tasks[index];
 
-        // Pre-fill the form with the task's current values
-        document.getElementById("taskTitle").value  = task.title;
-        document.getElementById("courseCode").value = task.code;
-        document.getElementById("courseName").value = task.name;
-        document.getElementById("dueDate").value    = task.due;
-        document.getElementById("description").value = task.desc;
-        document.getElementById("notes").value      = task.notes;
+        // Save the index so we know which task is being edited
+        editingIndex = index;
 
-        // Remove the old task so the re-submitted form replaces it
-        tasks.splice(index, 1);
-        originalOrder = tasks.slice(); // update original order after edit removal
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        renderTasks();
+        // Pre-fill the form with the task's current values
+        document.getElementById("taskTitle").value   = task.title;
+        document.getElementById("courseCode").value  = task.code;
+        document.getElementById("courseName").value  = task.name;
+        document.getElementById("dueDate").value     = task.due;
+        document.getElementById("description").value = task.desc;
+        document.getElementById("notes").value       = task.notes;
+
+        // Change the button labels to show edit mode
+        document.getElementById("addTaskBtn").textContent = "Confirm Edit";
+        document.getElementById("cancelBtn").textContent  = "Cancel Edit";
     }
 });
 
@@ -194,9 +205,15 @@ taskListSection.addEventListener("click", function(e) {
 taskListSection.addEventListener("click", function(e) {
     // Check if the clicked element is a delete button
     if (e.target.classList.contains("delete-btn")) {
-        const index = parseInt(e.target.getAttribute("data-index"));
+
+        // Block deletion while a task is being edited
+        if (editingIndex !== -1) {
+            alert("Please confirm or cancel the current edit before deleting a task.");
+            return;
+        }
 
         // Ask the user to confirm before deleting
+        const index = parseInt(e.target.getAttribute("data-index"));
         const confirmed = confirm("Are you sure you want to delete this task?");
         if (confirmed) {
             tasks.splice(index, 1); // remove 1 task at that position
@@ -219,6 +236,12 @@ function getTodayString() {
 // Clears the date error message
 function clearErrors() {
     document.getElementById("dateError").textContent = "";
+}
+
+// Resets the form buttons back to their default labels after editing is done
+function exitEditMode() {
+    document.getElementById("addTaskBtn").textContent = "Add Task";
+    document.getElementById("cancelBtn").textContent  = "Cancel";
 }
 
 // Validates all task form fields
@@ -256,25 +279,36 @@ taskForm.addEventListener("submit", function(e) {
 
     // Clear old errors and re-validate
     clearErrors();
-    if (!validateTaskForm(newTask)) return; // stop if any field is invalid
+    if (!validateTaskForm(newTask)) return;
 
-    tasks.push(newTask);
+    if (editingIndex !== -1) {
+        // Replace the existing task at the same index
+        tasks[editingIndex] = newTask;
+        editingIndex = -1;
+    } else {
+        // Add as a brand new task
+        tasks.push(newTask);
+    }
 
     // keep original order up to date when new task added
-    originalOrder = tasks.slice(); 
+    originalOrder = tasks.slice();
 
     // Save the updated tasks array to localStorage as a JSON string
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     taskForm.reset();
     clearErrors(); // clear any leftover messages after reset
+    exitEditMode();
     renderTasks();
 });
 
-// Cancel clears the form fields
+// Cancel - if editing, restore the original task; otherwise just clear the form
 cancelBtn.addEventListener("click", function() {
+    // editingIndex is still set, so the task was never removed - just clear the form
+    editingIndex = -1;
     taskForm.reset();
     clearErrors();
+    exitEditMode();
 });
 
 // Filter the displayed tasks as the user types in the search bar
