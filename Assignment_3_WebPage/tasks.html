@@ -53,22 +53,23 @@
             <!-- Form to add a new task -->
             <form id="taskForm">
                 <label for="taskTitle" class="required">Task Title</label>
-                <input type="text" id="taskTitle" placeholder="e.g. Assignment 3.1">
+                <input type="text" id="taskTitle" placeholder="e.g. Assignment 3.1" maxlength="50">
 
                 <label for="courseCode" class="required">Course Code</label>
-                <input type="text" id="courseCode" placeholder="e.g. INFO1012">
+                <input type="text" id="courseCode" placeholder="e.g. INFO1012" maxlength="20">
 
                 <label for="courseName">Course Name</label>
-                <input type="text" id="courseName" placeholder="e.g. Information Technology Systems">
+                <input type="text" id="courseName" placeholder="e.g. Information Technology Systems" maxlength="50">
 
                 <label for="dueDate" class="required">Due Date</label>
                 <input type="date" id="dueDate">
+                <span class="error-msg" id="dateError"></span>
 
                 <label for="description">Description</label>
-                <textarea id="description" rows="3" placeholder="What does this task involve?"></textarea>
+                <textarea id="description" rows="3" placeholder="What does this task involve?" maxlength="100"></textarea>
 
                 <label for="notes">Notes</label>
-                <textarea id="notes" rows="2" placeholder="Any extra notes?"></textarea>
+                <textarea id="notes" rows="2" placeholder="Any extra notes?" maxlength="50"></textarea>
 
                 <div class="form-buttons">
                     <button type="submit" id="addTaskBtn">Add Task</button>

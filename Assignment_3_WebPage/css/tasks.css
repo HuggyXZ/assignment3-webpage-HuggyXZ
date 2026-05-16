@@ -58,6 +58,13 @@ label.required::after {
     color: var(--accent-red);
 }
 
+/* Inline error messages shown below each form field */
+.error-msg {
+    color: var(--accent-red);
+    font-size: 0.85rem;
+    margin-top: -4px;
+}
+
 /* Cancel button style */
 #cancelBtn {
     background-color: var(--accent-red);

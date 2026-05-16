@@ -207,6 +207,40 @@ taskListSection.addEventListener("click", function(e) {
     }
 });
 
+// Helper function to get today's date in YYYY-MM-DD format (matches the date input value)
+function getTodayString() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
+
+// Clears the date error message
+function clearErrors() {
+    document.getElementById("dateError").textContent = "";
+}
+
+// Validates all task form fields
+// Returns true if everything is valid, false if there are any errors
+function validateTaskForm(task) {
+    let valid = true;
+
+    // Task Title, Course Code, Due Date are required
+    if (task.title === "" || task.code === "" || task.due === "") {
+        alert("Please fill in the Task Title, Course Code, and Due Date.");
+        valid = false;
+    }
+
+    // Due Date must not be before today
+    if (task.due !== "" && task.due < getTodayString()) {
+        document.getElementById("dateError").textContent = "Due Date cannot be in the past.";
+        valid = false;
+    }
+
+    return valid;
+}
+
 // When the task form is submitted, save the task and re-render
 taskForm.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -220,11 +254,9 @@ taskForm.addEventListener("submit", function(e) {
         notes: document.getElementById("notes").value.trim()
     };
 
-    // Validate that required fields are not empty - stop and alert if any are missing
-    if (newTask.title === "" || newTask.code === "" || newTask.due === "") {
-        alert("Please fill in the Task Title, Course Code, and Due Date.");
-        return;
-    }
+    // Clear old errors and re-validate
+    clearErrors();
+    if (!validateTaskForm(newTask)) return; // stop if any field is invalid
 
     tasks.push(newTask);
 
@@ -235,12 +267,14 @@ taskForm.addEventListener("submit", function(e) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     taskForm.reset();
+    clearErrors(); // clear any leftover messages after reset
     renderTasks();
 });
 
 // Cancel clears the form fields
 cancelBtn.addEventListener("click", function() {
     taskForm.reset();
+    clearErrors();
 });
 
 // Filter the displayed tasks as the user types in the search bar
