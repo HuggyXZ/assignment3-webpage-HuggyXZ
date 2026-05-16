@@ -1,5 +1,9 @@
 /* index.css - styles specific to the Home page */
 
+.welcome-message {
+    text-align: center;
+    margin-bottom: 24px;
+}
 /* Style for the unordered list inside the About the App section */
 .about-app ul {
     margin-top: 8px;
